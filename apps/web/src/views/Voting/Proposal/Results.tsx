@@ -9,6 +9,7 @@ import {
   Progress,
   Skeleton,
   Farm as FarmUI,
+  AutoColumn,
 } from '@pancakeswap/uikit'
 import { useAccount } from 'wagmi'
 import { Vote } from 'state/types'
@@ -60,8 +61,11 @@ const Results: React.FC<React.PropsWithChildren<ResultsProps>> = ({ choices, vot
                 <Box mb="4px">
                   <Progress primaryStep={progress} scale="sm" />
                 </Box>
-                <Flex alignItems="center" justifyContent="space-between">
-                  <Text color="textSubtle">{t('%total% Votes', { total: formatNumber(totalChoiceVote, 0, 2) })}</Text>
+                <Flex alignItems="flex-start" justifyContent="space-between">
+                  <AutoColumn>
+                    <Text color="textSubtle">{t('%total% Votes', { total: formatNumber(totalChoiceVote, 0, 2) })}</Text>
+                    <Text color="textSubtle">{t('%total% Addresses', { total: choiceVotes.length })}</Text>
+                  </AutoColumn>
                   <Text>
                     {progress.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%
                   </Text>

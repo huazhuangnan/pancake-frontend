@@ -38,6 +38,8 @@ const Overview = () => {
 
   const isPageLoading = votesLoadingStatus === FetchStatus.Fetching || proposalLoadingStatus === FetchStatus.Fetching
 
+  console.log(votes, 'votes')
+
   if (!proposal && error) {
     return <NotFound />
   }
